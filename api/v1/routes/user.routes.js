@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const router = Router(); // creamos instancia de Router
 
-const user_controller = require('../../controllers/userController');
+const user_controller = require('../../../controllers/userController');
 
 router.get('/:id', user_controller.getUser);
 router.get('/testUserApi', user_controller.testUserAPI);

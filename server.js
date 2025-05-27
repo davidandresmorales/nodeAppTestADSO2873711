@@ -18,7 +18,10 @@ app.use(morgan('common')); // Se establece el formato de log de las peticiones
 
 // Routes
 // Rutas de usuarios para la V1 del API
-app.use('/api/v1/users', require('./api/v1/user.routes')); // Ruta para users
+app.use('/api/v1/users', require('./api/v1/routes/user.routes')); // Ruta para users
+app.use('/api/v1/articles', require('./api/v1/routes/articles.routes')); // Ruta para articles
+app.use('/api/v1/categories', require('./api/v1/routes/categories.routes')); // Ruta para categories
+
 
 // // Rutas del API
 // app.get('/', (req, res) => {
