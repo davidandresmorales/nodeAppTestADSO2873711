@@ -4,6 +4,7 @@
   "description": "Proyecto de prueba inicial con NodeJs",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "dev": "nodemon server.js"
   },
   "keywords": [],
