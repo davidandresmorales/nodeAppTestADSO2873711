@@ -8,6 +8,7 @@ const testUserAPI = (req, resp) => {
     });
 };
 
+// Controladores de la API de usuarios
 const getAllUsers = async (req, resp) => {
     const users = await user_service.getAllUsers();
     if (users) {
