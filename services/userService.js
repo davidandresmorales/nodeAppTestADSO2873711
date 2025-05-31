@@ -1,72 +1,51 @@
+const db = require('../models');
 
-const db = require('../models')
+const getAllUsers = async () => {
+    try {
+        return await db.User.findAll();
+    } catch (error) {
+        throw new Error(`Error al traer los usuarios: ${error.message}`);
+    }
+};
 
-const getAllUsers = async () =>{
+const getOneUser = async (id) => {
     try {
-        const allUsers = await db.User.findAll()
-        return allUsers;
-        
+        return await db.User.findByPk(id);
     } catch (error) {
-        throw new Error(`Error al traer los usuarios ${error.message}`);
+        throw new Error(`Error al traer el usuario: ${error.message}`);
     }
-} 
-const getOneUser = async (id) =>{
+};
+
+const saveUser = async (name, email, password) => {
     try {
-        const user = await db.User.findByPk(id)
-        return user
+        return await db.User.create({ name, email, password });
     } catch (error) {
-              throw new Error(`Error al traer al susuario ${error.message}`);      
+        throw new Error(`Error al crear el usuario: ${error.message}`);
     }
-}
-const saveUser = async (name, email, password) =>{
-    try {
-        let newUser = await db.User.create({
-            name, 
-            email, 
-            password
-        })
-        return newUser
-    } catch (error) {
-        return error.message || "Error al crear el usuario";      
-    }
-}
+};
 
 const updateUser = async (id, name, email, password) => {
     try {
-        let updatedUser = await db.User.update({
-            name, 
-            email, 
-            password
-        }, {
-            where: {
-                id,
-            }
-        });
+        await db.User.update({ name, email, password }, { where: { id } });
+        const updatedUser = await db.User.findByPk(id);
         return updatedUser;
     } catch (error) {
-        return error.message || "Error al actualizar el usuario";      
+        throw new Error(`Error al actualizar el usuario: ${error.message}`);
     }
-}
+};
 
 const deleteUser = async (id) => {
     try {
-        const deletedUser = await db.User.destroy({
-            where: {
-                id,
-            }
-        });
-        return deletedUser;
+        return await db.User.destroy({ where: { id } });
     } catch (error) {
-        return error.message || "Error al eliminar el usuario";      
+        throw new Error(`Error al eliminar el usuario: ${error.message}`);
     }
-}
+};
 
-const getUser = async (id) => {
-    try {
-        let user = await db.User.findByPk(id);
-        return user;
-    } catch (error) {
-        throw {status: 500, message: error.message || "Error al encontrar el usuario"};      
-    }
-}
-module.exports = {getAllUsers, getOneUser, saveUser, updateUser, deleteUser, getUser}
+module.exports = {
+    getAllUsers,
+    getOneUser,
+    saveUser,
+    updateUser,
+    deleteUser
+};
