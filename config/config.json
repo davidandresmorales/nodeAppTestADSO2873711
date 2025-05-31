@@ -7,18 +7,10 @@
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
     "username": "davidm",
     "password": "AS1IxdZX8uKJCQpSNgNr47EV3s0BtlK5",
-    "database": "api_nodejs_app_test711",  
-    "host": "dpg-d0t5tik9c44c7395f1t0-a.oregon-postgres.render.com",
-    "port": 5432,
+    "database": "nodejs_app_test711_q2cr",
+    "host": "dpg-d0t5t1k9c44c7395flt0-a",
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
@@ -26,5 +18,12 @@
         "rejectUnauthorized": false
       }
     }
+  },
+   "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }
