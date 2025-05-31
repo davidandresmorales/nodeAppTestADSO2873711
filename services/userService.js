@@ -2,43 +2,62 @@ const db = require('../models');
 
 const getAllUsers = async () => {
     try {
-        return await db.User.findAll();
+        const allUsers = await db.User.findAll();
+        return allUsers;
     } catch (error) {
-        throw new Error(`Error al traer los usuarios: ${error.message}`);
+        throw new Error(`Error al traer los usuarios ${error.message}`);
     }
 };
 
 const getOneUser = async (id) => {
     try {
-        return await db.User.findByPk(id);
+        const user = await db.User.findByPk(id);
+        return user;
     } catch (error) {
-        throw new Error(`Error al traer el usuario: ${error.message}`);
+        throw new Error(`Error al traer al usuario ${error.message}`);
     }
 };
 
 const saveUser = async (name, email, password) => {
     try {
-        return await db.User.create({ name, email, password });
+        let newUser = await db.User.create({
+            name,
+            email,
+            password
+        });
+        return newUser;
     } catch (error) {
-        throw new Error(`Error al crear el usuario: ${error.message}`);
+        return error.message || "Error al crear el usuario";
     }
 };
 
 const updateUser = async (id, name, email, password) => {
     try {
-        await db.User.update({ name, email, password }, { where: { id } });
-        const updatedUser = await db.User.findByPk(id);
+        let updatedUser = await db.User.update({
+            name,
+            email,
+            password
+        }, {
+            where: {
+                id,
+            }
+        });
         return updatedUser;
     } catch (error) {
-        throw new Error(`Error al actualizar el usuario: ${error.message}`);
+        return error.message || "Error al actualizar el usuario";
     }
 };
 
 const deleteUser = async (id) => {
     try {
-        return await db.User.destroy({ where: { id } });
+        const deletedUser = await db.User.destroy({
+            where: {
+                id,
+            }
+        });
+        return deletedUser;
     } catch (error) {
-        throw new Error(`Error al eliminar el usuario: ${error.message}`);
+        return error.message || "Error al eliminar el usuario";
     }
 };
 

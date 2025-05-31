@@ -1,14 +1,13 @@
 const user_service = require('../services/userService');
 
 const testUserAPI = (req, resp) => {
-    console.log('TestUserAPI')
+    console.log('TestUserAPI');
     resp.status(200).send({
-        "status": "OK",
-        "message": "API User state: available",
+        status: "OK",
+        message: "API User state: available"
     });
 };
 
-// Controladores de la API de usuarios
 const getAllUsers = async (req, resp) => {
     const users = await user_service.getAllUsers();
     if (users) {
@@ -59,7 +58,7 @@ const deleteUser = async (req, resp) => {
     }
 };
 
-// Solo exportamos getOneUser, no getUser
+// Exportamos solo las funciones activas
 module.exports = {
     testUserAPI,
     getAllUsers,
