@@ -14,14 +14,14 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "davidm",
-    "password": "AS1IxdZX8uKJCQpSNgNr47EV3s0BtlK5",
-    "database": "nodejs_app_test711_q2cr",
-    "host": "dpg-d0t5tik9c44c7395f1t0-a.oregon-postgres.render.com",
-    "dialect": "postgres",
-    "ssl": {
-      "require": true,
-      "rejectUnauthorized": false
-    } 
-  }
+  "username": "davidm",
+  "password": "AS1IxdZX8uKJCQpSNgNr47EV3s0BtlK5",
+  "database": "api_nodejs_app_test711",  
+  "host": "dpg-d0t5tik9c44c7395f1t0-a.oregon-postgres.render.com",
+  "dialect": "postgres",
+  "ssl": {
+    "require": true,
+    "rejectUnauthorized": false
+  } 
+}
 }
